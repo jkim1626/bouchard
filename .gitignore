@@ -1,0 +1,4 @@
+venv/
+__pycache__/
+sythnetic_data/
+synthetic_mixed_noise/

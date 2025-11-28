@@ -1,0 +1,127 @@
+Loading clean NMR signals from ../synthetic_data/NMR_data ...
+Dataset: 5400 signals, mean=0.0001, std=0.5649
+[Epoch 1/20] loss = 0.072401
+[Epoch 2/20] loss = 0.053450
+[Epoch 3/20] loss = 0.049448
+[Epoch 4/20] loss = 0.049650
+[Epoch 5/20] loss = 0.047255
+[Epoch 6/20] loss = 0.048587
+[Epoch 7/20] loss = 0.049157
+[Epoch 8/20] loss = 0.046974
+[Epoch 9/20] loss = 0.046728
+[Epoch 10/20] loss = 0.047218
+[Epoch 11/20] loss = 0.044566
+[Epoch 12/20] loss = 0.043457
+[Epoch 13/20] loss = 0.047632
+[Epoch 14/20] loss = 0.047046
+[Epoch 15/20] loss = 0.044828
+[Epoch 16/20] loss = 0.045101
+[Epoch 17/20] loss = 0.045263
+[Epoch 18/20] loss = 0.045310
+[Epoch 19/20] loss = 0.044528
+[Epoch 20/20] loss = 0.045533
+Saved SDE model checkpoint to checkpoints/nmr_sde_model.pt
+
+
+===== python nmr_baselines.py
+Found 1350 files in ../synthetic_data/NMR_data
+Processing files...
+
+
+================================================================================
+BASELINE DENOISING RESULTS (grouped by SNR)
+Averaged across all files and channels for each SNR level
+================================================================================
+
+Method: Wiener
+Metric               |    -5.0 dB |     0.0 dB |     5.0 dB |    10.0 dB |    20.0 dB
+-------------------------------------------------------------------------------------
+Input SNR (dB)       |      -5.82 |      -0.82 |       4.18 |       9.18 |      19.18
+Output SNR (dB)      |      -5.81 |      -0.81 |       4.19 |       9.19 |      19.19
+SNR Improvement (dB) |       0.00 |       0.00 |       0.00 |       0.00 |       0.01
+MSE                  | 1.0082e+00 | 3.1879e-01 | 1.0080e-01 | 3.1871e-02 | 3.1856e-03
+PSNR (dB)            |      12.44 |      17.44 |      22.44 |      27.44 |      37.44
+Correlation          |     0.4629 |     0.6680 |     0.8371 |     0.9341 |     0.9923
+Relative Error       |     2.0757 |     1.1672 |     0.6564 |     0.3691 |     0.1167
+
+Method: Wavelet
+Metric               |    -5.0 dB |     0.0 dB |     5.0 dB |    10.0 dB |    20.0 dB
+-------------------------------------------------------------------------------------
+Input SNR (dB)       |      -5.82 |      -0.82 |       4.18 |       9.18 |      19.18
+Output SNR (dB)      |       0.26 |       1.20 |       2.63 |       4.47 |       8.49
+SNR Improvement (dB) |       6.08 |       2.02 |      -1.55 |      -4.71 |     -10.70
+MSE                  | 2.9619e-01 | 2.4247e-01 | 1.7868e-01 | 1.2270e-01 | 6.0926e-02
+PSNR (dB)            |      18.51 |      19.45 |      20.88 |      22.73 |      26.74
+Correlation          |     0.2187 |     0.4827 |     0.6956 |     0.8257 |     0.9314
+Relative Error       |     0.9732 |     0.8775 |     0.7514 |     0.6150 |     0.4028
+
+Method: TV
+Metric               |    -5.0 dB |     0.0 dB |     5.0 dB |    10.0 dB |    20.0 dB
+-------------------------------------------------------------------------------------
+Input SNR (dB)       |      -5.82 |      -0.82 |       4.18 |       9.18 |      19.18
+Output SNR (dB)      |      -4.87 |       0.12 |       5.09 |      10.05 |      19.74
+SNR Improvement (dB) |       0.95 |       0.94 |       0.91 |       0.87 |       0.56
+MSE                  | 8.1024e-01 | 2.5719e-01 | 8.1863e-02 | 2.6171e-02 | 2.8474e-03
+PSNR (dB)            |      13.39 |      18.37 |      23.34 |      28.30 |      38.00
+Correlation          |     0.4789 |     0.6877 |     0.8524 |     0.9422 |     0.9933
+Relative Error       |     1.8606 |     1.0479 |     0.5909 |     0.3338 |     0.1087
+
+Method: SDE
+Metric               |    -5.0 dB |     0.0 dB |     5.0 dB |    10.0 dB |    20.0 dB
+-------------------------------------------------------------------------------------
+Input SNR (dB)       |      -5.82 |      -0.82 |       4.18 |       9.18 |      19.18
+Output SNR (dB)      |     -17.12 |     -13.52 |       8.41 |      13.11 |      20.51
+SNR Improvement (dB) |     -11.30 |     -12.70 |       4.23 |       3.92 |       1.33
+MSE                  | 2.7743e+01 | 1.3370e+01 | 4.2904e-02 | 1.3229e-02 | 2.2834e-03
+PSNR (dB)            |       1.13 |       4.73 |      26.66 |      31.36 |      38.77
+Correlation          |     0.6757 |     0.7414 |     0.9349 |     0.9726 |     0.9948
+Relative Error       |     7.8422 |     5.1657 |     0.3890 |     0.2294 |     0.0988
+
+================================================================================
+Processing complete!
+================================================================================
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+==============================================
+ Noise-type confidence evaluation summary
+ (updated classifier with log-domain features)
+==============================================
+Total files evaluated: 560
+
+Overall regression metrics (weights vs true ratios)
+--------------------------------------------------
+  MSE   : 0.1462 ± 0.13448769429458626301077117659588111564517021
+  MAE   : 0.3065 ± 0.1593
+  RMSE  : 0.3403 ± 0.1745
+
+Per-component MSE
+-----------------
+  additive       : 0.1121
+  multiplicative : 0.1634
+  jump           : 0.1632
+
+Argmax (dominant noise type) classification
+-------------------------------------------
+  Overall accuracy: 38.93%
+
+  Accuracy by TRUE dominant type:
+    additive     :   29 /  175  ( 16.57%)
+    multiplicative:   30 /  189  ( 15.87%)
+    jump         :  159 /  196  ( 81.12%)
+==============================================
